@@ -83,7 +83,7 @@ function song() {
         limit: 1
     }, function (err, data) {
         if (err) {
-            console.log("you mmessed up: " + err);
+            console.log("you messed up: " + err);
             return;
         }
         console.log("---------------");
