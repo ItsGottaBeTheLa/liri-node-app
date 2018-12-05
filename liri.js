@@ -4,8 +4,8 @@ var request = require("request");
 var keys = require("./keys.js");
 var spotify = require("node-spotify-api");
 var fs = require("fs")
-
-//Variable being used for terminal input
+console.log(keys)
+// Variable being used for terminal input
 var liriArg = process.argv[2];
 //terminal commands
 if (liriArg === "spotify-this-song") {
@@ -58,7 +58,7 @@ function movie() {
 //Function to show Spotify data
 function song() {
 
-    var nSpotify = new spotify(keys.nSpotify);
+    var nSpotify = new spotify(keys.spotify);
     var argmt = process.argv;
     var songName = "";
 
