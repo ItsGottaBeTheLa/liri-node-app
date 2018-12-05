@@ -38,7 +38,7 @@ function movie() {
     var queryUrl = "https://www.omdbapi.com/?t=" + movieName + "y&plot=short&r=json&tomatoes=true"; 
 
     request(queryUrl, function (error, response, body){
-        if (!error && response.statusCode === 200) {
+        if (!error, response) {
             console.log("----------------");
             console.log("Title: " + JSON.parse(body).Title);
             console.log("Year: " + JSON.parse(body).Year);
