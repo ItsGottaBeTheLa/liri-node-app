@@ -35,7 +35,7 @@ function movie() {
 
 
     //Run a request to OMDB API
-    var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&yplot=short&r=json&tomatoes=true"; 
+    var queryUrl = "https://www.omdbapi.com/?t=" + movieName + "y&plot=short&r=json&tomatoes=true"; 
 
     request(queryUrl, function (error, response, body){
         if (!error && response.statusCode === 200) {
