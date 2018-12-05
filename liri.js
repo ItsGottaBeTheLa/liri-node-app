@@ -13,7 +13,7 @@ if (liriArg === "spotify-this-song") {
 } else if (liriArg === "movie-this") {
     movie();
 } else if (liriArg === "do-what-it-says") {
-    doSome();
+    userSearch();
 } else {
     console.log("Please enter one of the following commands: spotify-this-song, movie-this, do-what-it-says.");
 }
