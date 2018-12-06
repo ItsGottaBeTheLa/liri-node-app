@@ -19,7 +19,7 @@ if (liriArg === "spotify-this-song") {
 } else if (liriArg === "concert-this") {
     concertSearch();
 } else {
-    console.log("Please enter one of the following commands: spotify-this-song, movie-this, do-what-it-says.");
+    console.log("Please enter one of the following commands: spotify-this-song, movie-this, do-what-it-says. concert-this");
 }
 
 //Function to show movie data
@@ -116,15 +116,15 @@ function userSearch() {
 
 // Concert-this function
 function concertSearch() {
-    var artistName = "";
+    var artistName = process.argv[3];
     var queryUrl1 = "https://rest.bandsintown.com/artists/" + artistName +  "/events?app_id=codingbootcamp";
-    
+    // console.log(queryUrl1);
     axios.get(queryUrl1).then(function(response) {
-        console.log("---------------");
-        console.log("Venue: " + response.data[0].venue.name);
-        console.log("Venue location: " + response.data[0].venue.city + "," + response.data[0].venue.country);
-        var dateTime = response.data[0].datetime;
-        dateTime = moment(dateTime).format("dddd, MMMM Do YYYY, h:mm a");
-        console.log("Date: " + dateTime);
-    });
+        console.log(response);
+        
+
+    })
+    .catch(function(error){
+        console.log(error);
+    })
 };
