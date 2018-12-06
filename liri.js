@@ -3,8 +3,9 @@ require("dotenv").config();
 var request = require("request");
 var keys = require("./keys.js");
 var spotify = require("node-spotify-api");
-var fs = require("fs")
-var moment = require("moment")
+var fs = require("fs");
+var moment = require("moment");
+var axios = require("axios");
 
 // Variable being used for terminal input
 var liriArg = process.argv[2];
@@ -114,16 +115,16 @@ function userSearch() {
 };
 
 // Concert-this function
-let bandsURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
-request(bandsURL, function (err, response, body) {
-  if (err) {
-    console.log(err)
-  }
-  let x = JSON.parse(body);
-  x.forEach(element => {
-    console.log("Event Venue: " + element.venue.name)
-    console.log("Event Location: " + element.venue.city + "," + element.venue.region)
-    console.log("Event Date: " + moment(element.datetime).format('MM/DD/YYYY'))
-    console.log("------------------------------------")
-  });
-});
+function concertSearch() {
+    var artistName = "";
+    var queryUrl1 = "https://rest.bandsintown.com/artists/" + artistName +  "/events?app_id=codingbootcamp";
+    
+    axios.get(queryUrl1).then(function(response) {
+        console.log("---------------");
+        console.log("Venue: " + response.data[0].venue.name);
+        console.log("Venue location: " + response.data[0].venue.city + "," + response.data[0].venue.country);
+        var dateTime = response.data[0].datetime;
+        dateTime = moment(dateTime).format("dddd, MMMM Do YYYY, h:mm a");
+        console.log("Date: " + dateTime);
+    });
+};
