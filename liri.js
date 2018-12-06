@@ -75,7 +75,7 @@ function song() {
         songName = "The Zephyr Song"
         process.argmt[3] = songName;
     }
-    console.log(songName);
+    // console.log(songName);
 
     nSpotify.search({
         type: "track",
