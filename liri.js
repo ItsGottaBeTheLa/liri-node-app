@@ -37,7 +37,7 @@ function movie() {
     //Run a request to OMDB API
     var queryUrl = "https://www.omdbapi.com/?apikey=trilogy&t=" + movieName + "&plot=short&r=json"; 
 
-    request(queryUrl, function (error, response, body){
+    request(queryUrl, function (error, response){
 
         if (!error, response, queryUrl) {
             console.log("---------------");
