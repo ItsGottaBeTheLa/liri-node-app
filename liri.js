@@ -4,7 +4,8 @@ var request = require("request");
 var keys = require("./keys.js");
 var spotify = require("node-spotify-api");
 var fs = require("fs")
-console.log(keys)
+var moment = require("moment")
+
 // Variable being used for terminal input
 var liriArg = process.argv[2];
 //terminal commands
@@ -14,6 +15,8 @@ if (liriArg === "spotify-this-song") {
     movie();
 } else if (liriArg === "do-what-it-says") {
     userSearch();
+} else if (liriArg === "concert-this") {
+    concertSearch();
 } else {
     console.log("Please enter one of the following commands: spotify-this-song, movie-this, do-what-it-says.");
 }
@@ -109,3 +112,18 @@ function userSearch() {
         }
     })
 };
+
+// Concert-this function
+let bandsURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
+request(bandsURL, function (err, response, body) {
+  if (err) {
+    console.log(err)
+  }
+  let x = JSON.parse(body);
+  x.forEach(element => {
+    console.log("Event Venue: " + element.venue.name)
+    console.log("Event Location: " + element.venue.city + "," + element.venue.region)
+    console.log("Event Date: " + moment(element.datetime).format('MM/DD/YYYY'))
+    console.log("------------------------------------")
+  });
+});
