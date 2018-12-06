@@ -35,15 +35,15 @@ function movie() {
 
 
     //Run a request to OMDB API
-    var queryUrl = "https://www.omdbapi.com/?t=" + movieName + "y&plot=short&r=json&tomatoes=true"; 
+    var queryUrl = "https://www.omdbapi.com/?t=" + movieName + "y&plot=short&r=json"; 
 
     request(queryUrl, function (error, response, body){
-        if (!error, response) {
+        if (!error, response, queryUrl) {
             console.log("----------------");
             console.log("Title: " + JSON.parse(body).Title);
             console.log("Year: " + JSON.parse(body).Year);
             console.log("IMDB rating: " + JSON.parse(body).imdbRating);
-            console.log("Rotten Tomatoes rating: " + JSON.parse(body).Ratings[1].Value);
+            // console.log("Rotten Tomatoes: " + JSON.parse(body).Ratings[1].Value);
             console.log("Country: " +JSON.parse(body).Country);
             console.log("Language: " +JSON.parse(body).Language);
             console.log("Plot: " +JSON.parse(body).Plot);
