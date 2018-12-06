@@ -35,19 +35,19 @@ function movie() {
 
 
     //Run a request to OMDB API
-    var queryUrl = "https://www.omdbapi.com/?t=" + movieName + "y&plot=short&r=json"; 
+    var queryUrl = "https://www.omdbapi.com/?apikey=trilogy&t=" + movieName + "&plot=short&r=json"; 
 
     request(queryUrl, function (error, response, body){
+
         if (!error, response, queryUrl) {
-            console.log("----------------");
-            console.log("Title: " + JSON.parse(body).Title);
-            console.log("Year: " + JSON.parse(body).Year);
-            console.log("IMDB rating: " + JSON.parse(body).imdbRating);
-            // console.log("Rotten Tomatoes: " + JSON.parse(body).Ratings[1].Value);
-            console.log("Country: " +JSON.parse(body).Country);
-            console.log("Language: " +JSON.parse(body).Language);
-            console.log("Plot: " +JSON.parse(body).Plot);
-            console.log("Actors: " +JSON.parse(body).Actors);
+            console.log("---------------");
+            console.log(JSON.parse(response.body).Title);
+            console.log(JSON.parse(response.body).Year);
+            console.log(JSON.parse(response.body).Actors);
+            console.log(JSON.parse(response.body).Country);
+            console.log(JSON.parse(response.body).Language);
+            console.log(JSON.parse(response.body).imdbRating);
+            console.log(JSON.parse(response.body).Plot);
             console.log("---------------");
         } else {
             console.log("you messed up!");
