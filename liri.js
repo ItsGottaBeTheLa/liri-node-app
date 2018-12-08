@@ -4,7 +4,6 @@ var request = require("request");
 var keys = require("./keys.js");
 var spotify = require("node-spotify-api");
 var fs = require("fs");
-var moment = require("moment");
 var axios = require("axios");
 
 
@@ -116,19 +115,6 @@ function userSearch() {
 };
 
 // Concert-this function
-
-// function concertSearch(){
-
-
-//     var artistName = process.argv[3];
-
-//     request("https://rest.bandsintown.com/artists/" + artistName + "/events?app_id=codingbootcamp",function (error, response, data){
-//         console.log(response, data)
-
-//     })
-    
-// }
-
 
 function concertSearch(artistName) {
     fs.appendFile("log.txt", "concert-this " + artistName + `\n`, err => {});
