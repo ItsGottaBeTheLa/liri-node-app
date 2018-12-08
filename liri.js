@@ -139,6 +139,53 @@ function concertSearch(artistName) {
         url: `https://rest.bandsintown.com/artists/${artistName}/events?app_id=codingbootcamp`,
         responseType: "json"
     }).then(response => {
-        console.log(response.data);
+        //console.log(response.data);
+        var i = 0;
+
+        for (let event of response.data) {
+            console.log("---------------");
+            fs.appendFile(
+                "log.txt",
+                `---------------` + `\n`,
+                err => {}
+            )
+            try {
+                console.log(`Venue Name: ${event.venue.name}`);
+                fs.appendFile(
+                    "log.txt",
+                    `Venue Name: ${event.venue.name}` + `\n`,
+                    err => {}
+
+                );
+            }catch{
+                console.log("Cannot find upcoming concerts");
+                break;
+            }
+
+            console.log(`Venue location: ${event.venue.city}`);
+            fs.appendFile(
+                "log.txt",
+                `Venue location: ${event.venue.city}` + `\n`,
+                err => {}
+            );
+
+            console.log(`Date: ${event.datetime}`);
+            fs.appendFile(
+                "log.txt",
+                `Date: ${event.datetime}` + `\n`,
+                err => {}
+            )
+
+            console.log("---------------");
+            fs.appendFile(
+                "log.txt",
+                `---------------` + `\n`,
+                err => {}
+            );
+
+            i++;
+            if (i > 9) break;
+        }
+
     })
 };

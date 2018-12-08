@@ -13,3 +13,27 @@ concert-this undefined
 concert-this undefined
 concert-this undefined
 concert-this undefined
+concert-this undefined
+concert-this undefined
+concert-this undefined
+concert-this undefined
+concert-this undefined
+concert-this undefined
+concert-this undefined
+concert-this undefined
+concert-this undefined
+concert-this undefined
+concert-this undefined
+concert-this undefined
+Venue Name: Bowery Ballroom
+concert-this undefined
+Venue Name: Bowery Ballroom
+---------------
+Date: 2018-12-13T20:00:00
+Venue location: New York
+concert-this undefined
+---------------
+Date: 2018-12-13T20:00:00
+Venue location: New York
+Venue Name: Bowery Ballroom
+---------------
