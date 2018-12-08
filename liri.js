@@ -7,6 +7,7 @@ var fs = require("fs");
 var moment = require("moment");
 var axios = require("axios");
 
+
 // Variable being used for terminal input
 var liriArg = process.argv[2];
 //terminal commands
@@ -101,30 +102,43 @@ function song() {
 
 //Random FS Function
 
-function userSearch() {
-    fs.readFile("random.txt", "utf8", function(error, data) {
-        if (error) {
-            return console.log(error);
-        }
-        var data = data.split(',');
-        if (data[0] === "spotify-this-song") {
-            process.argv[3] = data[1];
-            song();
-        }
-    })
-};
+// function userSearch() {
+//     fs.readFile("random.txt", "utf8", function(error, data) {
+//         if (error) {
+//             return console.log(error);
+//         }
+//         var data = data.split(',');
+//         if (data[0] === "spotify-this-song") {
+//             process.argv[3] = data[1];
+//             song();
+//         }
+//     })
+// };
 
 // Concert-this function
-function concertSearch() {
-    var artistName = process.argv[3];
-    var queryUrl1 = "https://rest.bandsintown.com/artists/" + artistName +  "/events?app_id=codingbootcamp";
-    // console.log(queryUrl1);
-    axios.get(queryUrl1).then(function(response) {
-        console.log(response);
-        
 
-    })
-    .catch(function(error){
-        console.log(error);
+// function concertSearch(){
+
+
+//     var artistName = process.argv[3];
+
+//     request("https://rest.bandsintown.com/artists/" + artistName + "/events?app_id=codingbootcamp",function (error, response, data){
+//         console.log(response, data)
+
+//     })
+    
+// }
+
+
+function concertSearch(artistName) {
+    fs.appendFile("log.txt", "concert-this " + artistName + `\n`, err => {});
+    artistName = artistName;
+
+    axios({
+        method: "get",
+        url: `https://rest.bandsintown.com/artists/${artistName}/events?app_id=codingbootcamp`,
+        responseType: "json"
+    }).then(response => {
+        console.log(response.data);
     })
 };
