@@ -100,20 +100,20 @@ function song() {
     });
 };
 
-//Random FS Function
+// Random FS Function
 
-// function userSearch() {
-//     fs.readFile("random.txt", "utf8", function(error, data) {
-//         if (error) {
-//             return console.log(error);
-//         }
-//         var data = data.split(',');
-//         if (data[0] === "spotify-this-song") {
-//             process.argv[3] = data[1];
-//             song();
-//         }
-//     })
-// };
+function userSearch() {
+    fs.readFile("random.txt", "utf8", function(error, data) {
+        if (error) {
+            return console.log(error);
+        }
+        var data = data.split(',');
+        if (data[0] === "spotify-this-song") {
+            process.argv[3] = data[1];
+            song();
+        }
+    })
+};
 
 // Concert-this function
 
